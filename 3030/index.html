@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <title>Social!</title>
+</head>
+<body>
+<div class="row m-5">
+    <div class="col-3">
+        <div class="card" style="width: 100%;">
+            <div class="card-header">
+                <h3 class="text-center m-1">People</h3>
+            </div>
+            <ul class="list-group list-group-flush" id="lista">
+
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="row row-cols-1 row-cols-md-6" style="border: 1px solid #0085df;border-radius: 5px;padding: 5%;" id="holder">
+
+        </div>
+
+        <div class="col-12 text-center"> <div class="container-fluid m-3" ><h3>Friends of Friends</h3> </div>
+        <div class="row row-cols-1 row-cols-md-6"  style="border: 1px solid #0085df;border-radius: 5px;padding: 5%;" id="holder2">
+        </div>
+        </div>
+        <div class="col-12 text-center"> <div class="container-fluid m-3" ><h3>Suggested Friends</h3> </div>
+        <div class="row row-cols-1 row-cols-md-6" style="border: 1px solid #0085df;border-radius: 5px;padding: 5%;" id="holder3">
+
+        </div>
+        </div>
+        <br>
+    </div>
+</div>
+
+
+<script>
+    let people = [
+        {
+            "id": 1,
+            "firstName": "Paul",
+            "surname": "Crowe",
+            "age": 28,
+            "gender": "male",
+            "friends": [
+                2
+            ]
+        },
+        {
+            "id": 2,
+            "firstName": "Rob",
+            "surname": "Fitz",
+            "age": 23,
+            "gender": "male",
+            "friends": [
+                1,
+                3
+            ]
+        },
+        {
+            "id": 3,
+            "firstName": "Ben",
+            "surname": "O'Carolan",
+            "age": null,
+            "gender": "male",
+            "friends": [
+                2,
+                4,
+                5,
+                7
+            ]
+        },
+        {
+            "id": 4,
+            "firstName": "Victor",
+            "surname": "",
+            "age": 28,
+            "gender": "male",
+            "friends": [
+                3
+            ]
+        },
+        {
+            "id": 5,
+            "firstName": "Peter",
+            "surname": "Mac",
+            "age": 29,
+            "gender": "male",
+            "friends": [
+                3,
+                6,
+                11,
+                10,
+                7
+            ]
+        },
+        {
+            "id": 6,
+            "firstName": "John",
+            "surname": "Barry",
+            "age": 18,
+            "gender": "male",
+            "friends": [
+                5
+            ]
+        },
+        {
+            "id": 7,
+            "firstName": "Sarah",
+            "surname": "Lane",
+            "age": 30,
+            "gender": "female",
+            "friends": [
+                3,
+                5,
+                20,
+                12,
+                8
+            ]
+        },
+        {
+            "id": 8,
+            "firstName": "Susan",
+            "surname": "Downe",
+            "age": 28,
+            "gender": "female",
+            "friends": [
+                7
+            ]
+        },
+        {
+            "id": 9,
+            "firstName": "Jack",
+            "surname": "Stam",
+            "age": 28,
+            "gender": "male",
+            "friends": [
+                12
+            ]
+        },
+        {
+            "id": 10,
+            "firstName": "Amy",
+            "surname": "Lane",
+            "age": 24,
+            "gender": "female",
+            "friends": [
+                5,
+                11
+            ]
+        },
+        {
+            "id": 11,
+            "firstName": "Sandra",
+            "surname": "Phelan",
+            "age": 28,
+            "gender": "female",
+            "friends": [
+                5,
+                10,
+                19,
+                20
+            ]
+        },
+        {
+            "id": 12,
+            "firstName": "Laura",
+            "surname": "Murphy",
+            "age": 33,
+            "gender": "female",
+            "friends": [
+                7,
+                9,
+                13,
+                20
+            ]
+        },
+        {
+            "id": 13,
+            "firstName": "Lisa",
+            "surname": "Daly",
+            "age": 28,
+            "gender": "female",
+            "friends": [
+                12,
+                14,
+                20
+            ]
+        },
+        {
+            "id": 14,
+            "firstName": "Mark",
+            "surname": "Johnson",
+            "age": 28,
+            "gender": "male",
+            "friends": [
+                13,
+                15
+            ]
+        },
+        {
+            "id": 15,
+            "firstName": "Seamus",
+            "surname": "Crowe",
+            "age": 24,
+            "gender": "male",
+            "friends": [
+                14
+            ]
+        },
+        {
+            "id": 16,
+            "firstName": "Daren",
+            "surname": "Slater",
+            "age": 28,
+            "gender": "male",
+            "friends": [
+                18,
+                20
+            ]
+        },
+        {
+            "id": 17,
+            "firstName": "Dara",
+            "surname": "Zoltan",
+            "age": 48,
+            "gender": "male",
+            "friends": [
+                18,
+                20
+            ]
+        },
+        {
+            "id": 18,
+            "firstName": "Marie",
+            "surname": "D",
+            "age": 28,
+            "gender": "female",
+            "friends": [
+                17
+            ]
+        },
+        {
+            "id": 19,
+            "firstName": "Catriona",
+            "surname": "Long",
+            "age": 28,
+            "gender": "female",
+            "friends": [
+                11,
+                20
+            ]
+        },
+        {
+            "id": 20,
+            "firstName": "Katy",
+            "surname": "Couch",
+            "age": 28,
+            "gender": "female",
+            "friends": [
+                7,
+                11,
+                12,
+                13,
+                16,
+                17,
+                19
+            ]
+        }
+    ];
+    let lista = document.querySelector("#lista");
+    let holder = document.querySelector("#holder");
+    let holder2 = document.querySelector("#holder2");
+    let holder3 = document.querySelector("#holder3");
+    for (let name in people) {
+        let sifra = people[name].id - 1;
+        lista.innerHTML += '<li class="list-group-item" onclick="Prijatelji(' + sifra + ')" >' + people[name].firstName + " " + people[name].surname + '</li>'
+    }
+
+    function Prijatelji(sifra) {
+        holder.innerHTML = "";
+        holder2.innerHTML = "";
+        holder3.innerHTML = "";
+
+        holder.innerHTML += "<div   class='col-4'><h1 class='m-5'>" + people[sifra].firstName + "<span class='text-primary'> Friends</span></h1></div>"
+        let multial = [];
+
+        //Populating Selected person friend list
+        for (let i = 0; i < people[sifra].friends.length; i++) {
+            let pr = people[sifra].friends[i];
+
+            holder.innerHTML +=
+
+                '<div class="col-2">'+
+                '<div  class="card bg-primary"  style="max-width: 18rem!important;max-width: 18rem!important;"> ' +
+
+                '<h4  class="card-title text-center m-3 text-white">' + people[pr - 1].firstName + " " + people[pr - 1].surname + '</h4>' +
+                ' <ul class="list-group list-group-flush">' +
+                '<li class="list-group-item">Gender : ' + people[pr - 1].gender + '</li>' +
+                '<li class="list-group-item">Age : ' + people[pr - 1].age + '</li>' +
+                ' </ul>' +
+                ' </div>' +
+                '</div>'+
+                '</div>'
+
+
+        }
+
+        //Populating FofF
+        for (let i = 0; i < people[sifra].friends.length ; i++) {
+            let pr = people[sifra].friends[i] ;
+            for (let i in people[pr-1].friends){
+                multial.push(people[pr-1].friends[i]);
+            }
+
+        }
+
+        let mat2 = multial.filter(function(obj) {
+            return people.indexOf(obj) === -1;
+        });
+
+        //Display FoF
+        for (let i = 0; i < multial.length ; i++) {
+            let pr = multial[i];
+            if (people[pr-1].id != people[sifra].id){
+                holder2.innerHTML +=
+                    '<div class="col-2">'+
+                    '<div    class="card bg-primary m-2" style="max-width: 18rem!important;max-width: 18rem!important;"> ' +
+
+                    '<h4  class="card-title text-center m-3 text-white">' + people[pr - 1].firstName + " " + people[pr - 1].surname + '</h4>' +
+                    ' <ul class="list-group list-group-flush">' +
+                    '<li class="list-group-item">Gender : ' + people[pr - 1].gender + '</li>' +
+                    '<li class="list-group-item">Age : ' + people[pr - 1].age + '</li>' +
+                    ' </ul>' +
+                    ' </div>' +
+                    '</div>'+
+                        '</div>'
+            }
+        }
+
+        //Display 2match
+    for (let i=0;i< mat2.length;i++){
+        let pr = mat2[i];
+            holder3.innerHTML +=
+                '<div class="col-2">'+
+                '<div    class="card bg-primary m-2" style="max-width: 18rem!important;max-width: 18rem!important;"> ' +
+
+                '<h4  class="card-title text-center m-3 text-white">' + people[pr - 1].firstName + " " + people[pr - 1].surname + '</h4>' +
+                ' <ul class="list-group list-group-flush">' +
+                '<li class="list-group-item">Gender : ' + people[pr - 1].gender + '</li>' +
+                '<li class="list-group-item">Age : ' + people[pr - 1].age + '</li>' +
+                ' </ul>' +
+                ' </div>' +
+                '</div>'+
+                '</div>'
+        }
+
+
+
+
+    }
+
+</script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+</body>
+</html>
+
+
+
